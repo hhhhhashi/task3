@@ -1,34 +1,51 @@
 <main>
-  <p id="notice"></p>
-  <div class="container px-5 px-sm-0">
-    <div class="row">
-      <div class="col-md-3">
-        <h2>User info</h2>
+  <h1>User info</h1>
 
-        <img></img>
+  <%= image_tag @user.get_profile_image(100,100)%>
+  
+  <%=@user.name %>
+  
+  <%=@user.introduction %>
 
-        <table class="table">
-          <tbody>
-            <tr></tr>
-            <tr>
-              <th>name</th>
-              <th></th>
-            </tr>
-            <tr>
-              <th>introductoin</th>
-              <th></th>
-            </tr>
-          </tbody>
-        </table>
 
-        <div class="row">
-          <a class="btn btn-outline-secondary btn-block edit_user_61656" href="">
-            <i class="fas fa-user-cog"></i>
-          </a>
-        </div>
 
-      </div>
 
-    </div>
-  </div>
+
+
+
+
+
+
+
+<h1>New book</h1>
+
+<%= form_with model: @book do |f| %>
+
+  <h4>タイトル</h4>
+  <%= f.text_field :title %>
+
+  <h4>本文</h4>
+  <%= f.text_area :body %>
+
+  <%= f.submit '投稿' %>
+
+<% end %>
+
+
+<% @books.each do |book| %>
+
+  <p>画像</p>
+  <%= image_tag book.image, size: "200x200" %>
+
+  <p>name</p>
+  <span>
+    <%=link_to book.title, book_path(book.id) %>
+  </span>
+
+    <p>name</p>
+  <span>
+    <%=link_to book.body, book_path(book.id) %>
+  </span>
+
+<% end %>
 </main>
