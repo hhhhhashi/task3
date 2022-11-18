@@ -1,1 +1,23 @@
-<h1>books#show</h1>
+<h2>Book detail</h2>
+
+
+<%=image_tag @book.user.get_profile_image(100,100) %>
+
+<%=link_to @book.user.name,books_path %>
+
+<%=link_to @book.title,book_path(@book) %>
+
+<%=@book.body %>
+
+<% if @book.user == current_user %>
+    <%= link_to "destroy", book_path(@book), method: :delete %>
+<% end %>
+
+<% if @book.user == current_user %>
+    <%= link_to "edit", edit_book_path(@book.id) %>
+<% end %>
+
+
+
+
+
