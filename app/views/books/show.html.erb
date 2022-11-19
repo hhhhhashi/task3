@@ -1,22 +1,37 @@
+<div class="col-md-8 offset-md-1">
 <h2>Book detail</h2>
+<table class="table">
+<tbody>
+<tr>
+    <td>
+        <%=image_tag @book.user.get_profile_image(100,100) %>
+        <%=link_to @book.user.name,books_path %>
+    </td>
 
+    <td>
+        <%=link_to @book.title,book_path(@book) %>
+    </td>
 
-<%=image_tag @book.user.get_profile_image(100,100) %>
+    <td>
+        <%=@book.body %>
+    </td>
 
-<%=link_to @book.user.name,books_path %>
+    <td>
+        <% if @book.user == current_user %>
+            <%= link_to "edit", edit_book_path(@book.id),class:"btn btn-sm btn-success edit_book_47394" %>
+        <% end %>
+    </td>
 
-<%=link_to @book.title,book_path(@book) %>
+    <td>
+        <% if @book.user == current_user %>
+            <%= link_to "destroy", book_path(@book), method: :delete,class:"btn btn-sm btn-danger destroy_book_47394" %>
+        <% end %>
+    </td>
 
-<%=@book.body %>
-
-<% if @book.user == current_user %>
-    <%= link_to "destroy", book_path(@book), method: :delete %>
-<% end %>
-
-<% if @book.user == current_user %>
-    <%= link_to "edit", edit_book_path(@book.id) %>
-<% end %>
-
+</tr>
+</tbody>
+</table>
+</div>
 
 
 
