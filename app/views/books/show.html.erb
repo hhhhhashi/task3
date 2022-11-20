@@ -1,39 +1,45 @@
 <main>
- <%= flash[:notice] %>
- <div class="container px-5 px-sm-0">
-  <div class="row">
-   <%= render "list", user: @user, book: @bookn %>
-   <div class="col-md-8 offset-md-1">
-   <h2>Book detail</h2>
-   <table class="table">
-    <tbody>
-     <tr>
-      <td>
-       <%=image_tag @book.user.get_profile_image(100,100) %>
-       <%=link_to @book.user.name,books_path %>
-      </td>
-      <td>
-       <%=link_to @book.title,book_path(@book) %>
-      </td>
-      <td>
-       <%=@book.body %>
-      </td>
-      <td>
-       <% if @book.user == current_user %>
-        <%= link_to "edit", edit_book_path(@book.id),class:"btn btn-sm btn-success edit_book_47394" %>
-       <% end %>
-      </td>
-      <td>
-       <% if @book.user == current_user %>
-        <%= link_to "destroy", book_path(@book), method: :delete, "data-confirm" => "本当に削除しますか？" ,class:"btn btn-sm btn-danger destroy_book_47394" %>
-       <% end %>
-      </td>
-    </tr>
-   </tbody>
-  </table>
-  </div>
-  </div>
- </div>
+<%= flash[:notice] %>
+  <div class="container px-5 px-sm-0">
+    <div class="row">
+
+    <%= render "list", user: @user, book: @bookn %>
+
+      <div class="col-md-8 offset-md-1">
+        <h2>Book detail</h2>
+        <table class="table">
+          <tbody>
+            <tr>
+              <td>
+                <%=image_tag @book.user.get_profile_image(100,100) %>
+                <%=link_to @book.user.name,books_path %>
+              </td>
+
+              <td>
+                <%=link_to @book.title,book_path(@book) %>
+              </td>
+
+              <td>
+                  <%=@book.body %>
+              </td>
+
+              <td>
+                <% if @book.user == current_user %>
+                  <%= link_to "edit", edit_book_path(@book.id),class:"btn btn-sm btn-success edit_book_47394" %>
+                <% end %>
+              </td>
+
+              <td>
+                <% if @book.user == current_user %>
+                  <%= link_to "destroy", book_path(@book), method: :delete, "data-confirm" => "本当に削除しますか？" ,class:"btn btn-sm btn-danger destroy_book_47394" %>
+                <% end %>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+   </div>
 </main>
 
 
