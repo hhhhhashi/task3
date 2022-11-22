@@ -11,8 +11,11 @@
           <tbody>
             <tr>
               <td>
+                <%=link_to user_path(@user) do %>
                 <%=image_tag @book.user.get_profile_image(100,100) %>
-                <%=link_to @book.user.name,books_path %>
+                <%=@book.user.name %>
+                <% end %>
+
               </td>
 
               <td>
@@ -25,13 +28,13 @@
 
               <td>
                 <% if @book.user == current_user %>
-                  <%= link_to "edit", edit_book_path(@book.id),class:"btn btn-sm btn-success edit_book_47394" %>
+                  <%= link_to "Edit", edit_book_path(@book.id),class:"btn btn-sm btn-success edit_book_47394" %>
                 <% end %>
               </td>
 
               <td>
                 <% if @book.user == current_user %>
-                  <%= link_to "destroy", book_path(@book), method: :delete, "data-confirm" => "本当に削除しますか？" ,class:"btn btn-sm btn-danger destroy_book_47394" %>
+                  <%= link_to "Destroy", book_path(@book), method: :delete, "data-confirm" => "本当に削除しますか？" ,class:"btn btn-sm btn-danger destroy_book_47394" %>
                 <% end %>
               </td>
             </tr>
